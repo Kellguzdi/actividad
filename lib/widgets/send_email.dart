@@ -9,6 +9,21 @@ class SendEmail extends StatefulWidget {
 }
 
 class _SendEmailState extends State<SendEmail> {
+  final TextEditingController _emailController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  String? validateEmail(String? value) {
+    final RegExp emailRegExp = RegExp(
+      r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+    );
+    if (value == null || value.isEmpty) {
+      return 'Por favor, ingrese su correo electrónico';
+    } else if (!emailRegExp.hasMatch(value)) {
+      return 'Por favor, ingrese un correo electrónico válido';
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +35,7 @@ class _SendEmailState extends State<SendEmail> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
+            key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -32,9 +48,10 @@ class _SendEmailState extends State<SendEmail> {
                   height: 48,
                 ),
                 TextFormField(
-                  decoration: const InputDecoration(
-                    label: Text('Correo electronico')
-                  ),
+                  controller: _emailController,
+                  decoration:
+                      const InputDecoration(label: Text('Correo electronico')),
+                  validator: validateEmail,
                 ),
                 const SizedBox(
                   height: 48,
@@ -43,18 +60,17 @@ class _SendEmailState extends State<SendEmail> {
                   height: 48,
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: (){
-                      Navigator.pushNamed(context,'/verify-code');
-                    },
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: Colors.amber[400],
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16)
-                      )
-                    ),
-                    child: const Text('Enviar Código')
-                  ),                  
+                      onPressed: () {
+                        if(_formKey.currentState!.validate()){
+                          Navigator.pushNamed(context, '/verify-code');
+                        }                        
+                      },
+                      style: OutlinedButton.styleFrom(
+                          backgroundColor: Colors.amber[400],
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16))),
+                      child: const Text('Enviar Código')),
                 )
               ],
             ),
