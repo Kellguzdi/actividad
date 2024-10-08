@@ -1,4 +1,4 @@
-import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -31,18 +31,19 @@ class _LoginState extends State<Login> {
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                title: Text('Login')
+                title: const Text('Login'),
+                centerTitle: true,
             ),
             body: Center(
                 child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Form(
-                        //key: _formKey,
+                        key: _formKey,
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                                 Image.asset(
-                                    'assets/logo.png',
+                                    'assets/logo2.png',
                                     width:200,
                                     height:200
                                 ),
@@ -64,20 +65,19 @@ class _LoginState extends State<Login> {
                                 TextFormField(
                                     controller: _passwordController,
                                     obscureText:_isObscure,
-                                    decoration: const InputDecoration(
+                                    decoration: InputDecoration(
                                         hintText :'Contraseña',
-                                        label: Text ('Contraseña'),
+                                        label: const Text ('Contraseña'),
                                         suffixIcon: IconButton(
-                                            onPressed: (){
-                                                setState( () {
-                                                    _isObscure = !_isObscure
-                                                });
+                                            onPressed:(){
+                                                setState(() => _isObscure = !_isObscure,);
                                             },
                                             icon: Icon(
                                                 _isObscure ? Icons.visibility : Icons.visibility_off
                                             )
                                         )
-                                    ),                                    
+                                    ),                
+                                                        
                                 ),
                                 const SizedBox(
                                     height:30,
@@ -88,18 +88,20 @@ class _LoginState extends State<Login> {
                                     child: ElevatedButton(
                                         onPressed: () {
                                             if(_formKey.currentState!.validate()){
+                                                Navigator.pushNamed(context,'/send-email');
                                             print(
                                             "Datos : ${_emailController.text} ${_passwordController.text}");
+                                                
                                             }
                                         },
-                                        child: const Text('Iniciar Sesion'),
                                         style: OutlinedButton.styleFrom(
                                             backgroundColor: Colors.pink,
                                             foregroundColor: Colors.white,
                                             shape: RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.circular(16),
                                             )
-                                        )
+                                        ),
+                                        child: const Text('Iniciar Sesion')
                                     ),
                                 )
                             ]

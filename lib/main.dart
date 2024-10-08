@@ -1,3 +1,6 @@
+import 'package:actividad/widgets/recovery_password.dart';
+import 'package:actividad/widgets/send_email.dart';
+import 'package:actividad/widgets/verify_email.dart';
 import 'package:flutter/material.dart';
 import 'package:actividad/widgets/login.dart';
 
@@ -14,7 +17,11 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/':(context) =>  const Login(),
+        '/send-email':(context) =>  const Login(),
+        '/verify-code':(context) =>  const SendEmail(),
+        '/':(context) =>  const VerifyEmail(),
+        '/save':(context) =>  const RecoveryPassword(),
+
       },
     );
   }
