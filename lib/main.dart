@@ -17,9 +17,9 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/send-email':(context) =>  const Login(),
-        '/verify-code':(context) =>  const SendEmail(),
-        '/':(context) =>  const VerifyEmail(),
+        '/':(context) =>  const Login(),
+        '/send-email':(context) =>  const SendEmail(),
+        '/verify-code':(context) =>  const VerifyEmail(),
         '/save':(context) =>  const RecoveryPassword(),
 
       },

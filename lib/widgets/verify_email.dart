@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
@@ -58,9 +57,11 @@ class _VerifyEmailState extends State<VerifyEmail> {
                     height: 48,
                   ),
                   TextFormField(
+                    controller: _codeController,
                     decoration: const InputDecoration(
                         label: Text('Código de verificación')),
                     validator: validateCode,
+                    keyboardType: TextInputType.number,
                   ),
                   const SizedBox(
                     height: 48,
