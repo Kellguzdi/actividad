@@ -17,29 +17,17 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -52,11 +40,47 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAU43oELAdEk4YtExkLTeBmxbrlXSbm2I8',
-    appId: '1:920745386501:android:41369903b4cedd9692b26c',
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDOI_uAOskKRE69IqPsvU1PsB6qpkhsxpo',
+    appId: '1:920745386501:web:e5139ccaa766a16e92b26c',
     messagingSenderId: '920745386501',
     projectId: 'actividad-14f16',
+    authDomain: 'actividad-14f16.firebaseapp.com',
+    storageBucket: 'actividad-14f16.appspot.com',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyAU43oELAdEk4YtExkLTeBmxbrlXSbm2I8',
+    appId: '1:920745386501:android:943c80d7f29af7c792b26c',
+    messagingSenderId: '920745386501',
+    projectId: 'actividad-14f16',
+    storageBucket: 'actividad-14f16.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyB0x9xOBJRRAAZ3JCxcT4MA7OxCYBY_-Jk',
+    appId: '1:920745386501:ios:c73785114499f98192b26c',
+    messagingSenderId: '920745386501',
+    projectId: 'actividad-14f16',
+    storageBucket: 'actividad-14f16.appspot.com',
+    iosBundleId: 'com.example.actividad',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyB0x9xOBJRRAAZ3JCxcT4MA7OxCYBY_-Jk',
+    appId: '1:920745386501:ios:c73785114499f98192b26c',
+    messagingSenderId: '920745386501',
+    projectId: 'actividad-14f16',
+    storageBucket: 'actividad-14f16.appspot.com',
+    iosBundleId: 'com.example.actividad',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyDOI_uAOskKRE69IqPsvU1PsB6qpkhsxpo',
+    appId: '1:920745386501:web:6b3b16b161cee4f492b26c',
+    messagingSenderId: '920745386501',
+    projectId: 'actividad-14f16',
+    authDomain: 'actividad-14f16.firebaseapp.com',
     storageBucket: 'actividad-14f16.appspot.com',
   );
 }

@@ -32,7 +32,9 @@ class _CreateAccountState extends State<CreateAccount> {
     if (value == null || value.isEmpty) {
       return 'La contraseña no puede estar vacía';
     }
-
+    if (value.length <6){
+      return 'La contraseña debe contener minimo 6 digito';
+    }
     // Verifica que no tenga caracteres especiales, solo letras y números
     final isValidPassword = RegExp(r'^[a-zA-Z0-9]+$');
     if (!isValidPassword.hasMatch(value)) {

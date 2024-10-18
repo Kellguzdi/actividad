@@ -1,7 +1,7 @@
 //es lo primero que se muestra cuando el logotipo se carga
-
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 

@@ -87,7 +87,7 @@ class _LoginState extends State<Login> {
                           child: ElevatedButton(
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
-                                  Navigator.pushNamed(context, '/send-email');
+                                  Navigator.pushNamed(context, '/profile');
                                   try {
                             final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
                               email: _emailController.text,
@@ -114,10 +114,10 @@ class _LoginState extends State<Login> {
                         TextButton(
                           onPressed: () {
                           // Navegar a la pantalla de recuperación de contraseña                            
-                            Navigator.pushNamed(context, '/save');
+                            Navigator.pushNamed(context, '/register');
                           },
                           child: const Text(
-                            'Recuperar contraseña',
+                            'Registrarse',
                             style: TextStyle(
                               decoration: TextDecoration.underline,
                               color: Colors.black
